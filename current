@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# Description: Print the version of the current package.json
+# Author: Evan Lucas
+#
+
+node -e "try {var p=require('./package.json');console.log('\x1B[36m'+p.name+'\x1B[39m','v'+p.version)}catch(e){console.log('No package.json')}"

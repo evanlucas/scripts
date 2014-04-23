@@ -1,0 +1,5 @@
+#!/usr/bin/env
+#
+# Description: Shorter than 'npm i --save'
+
+npm install --save "$@"

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# Description: A workaround for logging by name with bunyan
+#
+
+if [[ ! "$1" ]]; then
+  echo "Usage: logbyname <name>"
+  exit 1
+fi
+
+CMD='bunyan*:::log-*/strstr(this->str = copyinstr(arg0), "\"name\":\"'
+CMD="$CMD$1"
+CMD2='\"") != NULL/{printf("%s", this->str)}'
+CMD="$CMD$CMD2"
+sudo dtrace -x strsize=4k -qn "$CMD" | bunyan

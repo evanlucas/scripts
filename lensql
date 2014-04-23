@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Description: Get number of SQL Server connections
+# Author: Evan Lucas
+#
+
+ELLOG_HEADING="lensql"
+. ~/bin/bash/ellog.bash
+
+COUNT=$(netstat -an | grep 1433 | wc -l | awk '{print $1}')
+ellog_info "connections" "$COUNT"

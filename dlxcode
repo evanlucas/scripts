@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# Description: Download a version of Xcode
+# Author: Evan Lucas
+#
+
+ELLOG_HEADING="dlxcode"
+. ~/bin/bash/ellog.bash
+
+if [[ ! "$1" ]]; then
+  ellog_error "invalid args" "Usage: dlxcode <version>"
+  exit 1
+fi
+
+VERS="$1"
+
+adc-download "https://developer.apple.com/downloads/download.action?path=Developer_Tools/xcode_$VERS/xcode_$VERS.dmg"
